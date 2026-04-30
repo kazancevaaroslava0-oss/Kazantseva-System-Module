@@ -20,4 +20,3 @@
 ## Лицензия
 MIT License
 
-docs: update readme with UI prototypes
