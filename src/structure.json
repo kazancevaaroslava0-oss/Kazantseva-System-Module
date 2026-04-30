@@ -3,17 +3,106 @@
   "author": "Казанцева",
   "version": "1.0.0",
   "license": "MIT",
-  "statuses": ["draft", "under_review", "approved", "rejected", "signed"],
-  "input": {
-    "document": {
-      "title": "string",
-      "content": "string"
+  "description": "Модуль согласования статуса документов",
+
+  "входящие_параметры": {
+    "createDocument": {
+      "title": {
+        "тип": "string",
+        "обязательный": true,
+        "описание": "Название документа",
+        "максимум_символов": 200
+      },
+      "content": {
+        "тип": "string",
+        "обязательный": true,
+        "описание": "Содержание документа"
+      },
+      "authorId": {
+        "тип": "integer",
+        "обязательный": true,
+        "описание": "ID автора документа"
+      }
+    },
+    "submitForApproval": {
+      "documentId": {
+        "тип": "integer",
+        "обязательный": true,
+        "описание": "ID документа для отправки"
+      },
+      "reviewerId": {
+        "тип": "integer",
+        "обязательный": true,
+        "описание": "ID согласующего лица"
+      }
+    },
+    "approveDocument": {
+      "documentId": {
+        "тип": "integer",
+        "обязательный": true
+      },
+      "comment": {
+        "тип": "string",
+        "обязательный": false,
+        "описание": "Комментарий при согласовании"
+      }
+    },
+    "rejectDocument": {
+      "documentId": {
+        "тип": "integer",
+        "обязательный": true
+      },
+      "reason": {
+        "тип": "string",
+        "обязательный": true,
+        "описание": "Причина отклонения"
+      }
     }
   },
-  "output": {
+
+  "исходящие_параметры": {
     "document": {
-      "id": "integer",
-      "status": "string"
+      "id": {
+        "тип": "integer",
+        "описание": "Уникальный ID документа"
+      },
+      "title": {
+        "тип": "string",
+        "описание": "Название документа"
+      },
+      "status": {
+        "тип": "string",
+        "описание": "Текущий статус",
+        "возможные_значения": ["draft", "under_review", "approved", "rejected", "signed"]
+      },
+      "authorId": {
+        "тип": "integer",
+        "описание": "ID автора"
+      },
+      "createdAt": {
+        "тип": "datetime",
+        "описание": "Дата создания"
+      },
+      "updatedAt": {
+        "тип": "datetime",
+        "описание": "Дата последнего изменения"
+      }
+    },
+    "statusResponse": {
+      "documentId": "integer",
+      "currentStatus": "string",
+      "history": [
+        {
+          "status": "string",
+          "changedAt": "datetime",
+          "changedBy": "integer",
+          "comment": "string"
+        }
+      ]
+    },
+    "error": {
+      "code": "integer",
+      "message": "string"
     }
   }
 }
