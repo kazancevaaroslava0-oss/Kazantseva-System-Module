@@ -1,0 +1,13 @@
+{
+  "moduleName": "Мой модуль системы",
+  "version": "1.0.0",
+  "input": {
+    "userQuery": "string",
+    "context": "object | null"
+  },
+  "output": {
+    "response": "string",
+    "status": "success | error",
+    "data": "object | null"
+  }
+}
