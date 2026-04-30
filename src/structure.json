@@ -1,13 +1,19 @@
 {
-  "moduleName": "Мой модуль системы",
+  "moduleName": "DocumentStatusApproval",
+  "author": "Казанцева",
   "version": "1.0.0",
+  "license": "MIT",
+  "statuses": ["draft", "under_review", "approved", "rejected", "signed"],
   "input": {
-    "userQuery": "string",
-    "context": "object | null"
+    "document": {
+      "title": "string",
+      "content": "string"
+    }
   },
   "output": {
-    "response": "string",
-    "status": "success | error",
-    "data": "object | null"
+    "document": {
+      "id": "integer",
+      "status": "string"
+    }
   }
 }
