@@ -214,5 +214,6 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
-# Streamlit
+# Streamlit 
 .streamlit/secrets.toml
+init: Project initialization
